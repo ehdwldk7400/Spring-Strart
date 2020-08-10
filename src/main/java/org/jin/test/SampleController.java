@@ -1,5 +1,7 @@
 package org.jin.test;
 
+import java.lang.ProcessBuilder.Redirect;
+
 import org.jin.domain.SampleDTOList;
 import org.jin.domain.sampleDTO;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "board")
@@ -49,13 +52,14 @@ public class SampleController {
 	
 	// Redirect 처리
 	@RequestMapping(value="doE",  method = RequestMethod.GET)
-	public String doE() {
+	public String doE(RedirectAttributes rttr) {
 		logger.info("doE 실행됨");
-		return "redirect:/doF";
+		rttr.addAttribute("msg", "리다이렉트에 보낼 메시지");
+		return "redirect:/board/doF";
 		
 	}
 	@RequestMapping(value="doF",  method = RequestMethod.GET)
-	public void doF() {
+	public void doF(String msg) {
 		logger.info("doF 실행됨");
 	}
 	
