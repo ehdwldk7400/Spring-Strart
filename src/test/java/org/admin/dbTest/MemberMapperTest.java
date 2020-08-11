@@ -42,6 +42,26 @@ public class MemberMapperTest {
 	@Test
 	public void testReadMemberList() {
 		List<MemberVO> memvo = memmapper.readMemberList();
-		memvo.forEach(arg0);
+		memvo.forEach(member->logger.info(""+member));
+	}
+	
+	@Test
+	public void testUpdateMember() {
+		MemberVO member  = new MemberVO();
+		
+		member.setUserpw("9999");
+		member.setUsername("æ∆¿Ã¿Ø");
+		member.setUserid("def");
+		
+		memmapper.updateMember(member);
+	}
+	
+	@Test
+	public void testDeleteMember() {
+		MemberVO member  = new MemberVO();
+		
+		member.setUserid("def");
+		
+		memmapper.deleteMember(member);
 	}
 }

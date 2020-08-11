@@ -14,7 +14,15 @@
   		select * from tbl_member where userid=#{userid}
   	</select>
   	
-  	<select id="readMemberList">
+  	<select id="readMemberList" resultType="org.jin.mapper.MemberVO">
   		select * from tbl_member
   	</select>
+  	
+  	<update id="updateMember">
+  		update tbl_member set userpw = #{userpw}, username = #{username} where userid=#{userid}
+  	</update>
+  	
+  	<delete id="deleteMember">
+  		delete from tbl_member where userid=#{userid};
+  	</delete>
   </mapper>
