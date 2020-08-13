@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.jin.domain.BoardVO;
 import org.jin.domain.Cirteria;
+import org.jin.domain.PageDTO;
 import org.jin.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,7 @@ public class BoardController {
 	public void listGet(Model model, Cirteria cri) throws Exception{
 		logger.info("list get.....");
 		model.addAttribute("list", service.listPage(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		
 	}
 	@RequestMapping(value = "read", method = RequestMethod.GET)

@@ -22,9 +22,14 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"> 1 2 3 4</td>
+			<td colspn="5">
+				<a href="/jin/board/register"><button>글쓰기</button></a>
+			</td>
 		</tr>
 	</table>
+	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+		<a href="/jin/board/list?pageNum=${num}">${num}</a>
+	</c:forEach>
 	<c:if test="${msg eq 'success' }">
 			<script type="text/javascript">
 				alert('수정되었습니다.');
@@ -35,6 +40,6 @@
 				alert('삭제되었습니다.');
 			</script>
 		</c:if>
-		<a href="/jin/board/register"><button>글쓰기</button></a>
+	
 </body>
 </html>
