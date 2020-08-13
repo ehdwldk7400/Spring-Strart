@@ -3,6 +3,7 @@ package org.jin.service;
 import java.util.List;
 
 import org.jin.domain.BoardVO;
+import org.jin.domain.Cirteria;
 import org.jin.mapper.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,9 +39,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> lsistAll() throws Exception {
+	public List<BoardVO> listtAll() throws Exception {
 		// TODO Auto-generated method stub
 		return dao.lsistAll();
 	}
+
+	@Override
+	public List<BoardVO> listPage(Cirteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listPage(cri);
+	}
+
+
+	
 	
 }

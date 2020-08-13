@@ -3,6 +3,7 @@ package org.jin.mapper;
 import java.util.List;
 
 import org.jin.domain.BoardVO;
+import org.jin.domain.Cirteria;
 
 public interface BoardDAO {
 	
@@ -20,4 +21,7 @@ public interface BoardDAO {
 	
 	// 게시글 리스트
 	public List<BoardVO> lsistAll() throws Exception;
+	
+	// 게시글 10개 식 리스트
+	public List<BoardVO> listPage(Cirteria cri) throws Exception;
 }

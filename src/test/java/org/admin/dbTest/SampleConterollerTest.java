@@ -31,8 +31,14 @@ public class SampleConterollerTest {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
 	
-	@Test
+/*	@Test
 	public void testDoA() throws Exception{
 		mockMvc.perform(MockMvcRequestBuilders.get("board/doA"));
+	}*/
+	@Test
+	public void testListPage() throws Exception{
+		logger.info(""+mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+				.param("pageNum", "1").param("amount", "10"))
+					.andReturn().getModelAndView().getModelMap());
 	}
 }

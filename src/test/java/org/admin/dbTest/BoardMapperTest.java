@@ -3,6 +3,7 @@ package org.admin.dbTest;
 import javax.sound.midi.MidiDevice.Info;
 
 import org.jin.domain.BoardVO;
+import org.jin.domain.Cirteria;
 import org.jin.mapper.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ public class BoardMapperTest {
 	@Autowired
 	private BoardDAO dao;
 	
-	@Test
+/*	@Test
 	public void testCreate() throws Exception{
 		BoardVO board = new BoardVO();
 		
@@ -29,8 +30,8 @@ public class BoardMapperTest {
 		board.setWriter("user00");
 		
 		dao.create(board);
-	}
-	@Test
+	}*/
+/*	@Test
 	public void TestRead() throws Exception{
 		BoardVO vo = new BoardVO();
 		
@@ -46,19 +47,26 @@ public class BoardMapperTest {
 		vo.setBno(2);
 		
 		dao.update(vo);
-	}
-	@Test
+	}*/
+/*	@Test
 	public void TestDelete() throws Exception{
 		BoardVO vo = new BoardVO();
 		
 		vo.setBno(1);
 		dao.delete(vo);	
-	}
-	@Test
+	}*/
+/*	@Test
 	public void TestList() throws Exception{
 		
 		BoardVO vo = new BoardVO();
 		
 		dao.lsistAll().forEach(action->logger.info(""+action));
+	}*/
+	@Test
+	public void testListPage() throws Exception{
+		Cirteria cri = new Cirteria();
+		cri.setPageNum(2);
+		cri.setAmount(10);
+		dao.listPage(cri).forEach(board->logger.info(""+board));;
 	}
 }
