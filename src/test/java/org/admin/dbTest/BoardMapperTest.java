@@ -62,11 +62,21 @@ public class BoardMapperTest {
 		
 		dao.lsistAll().forEach(action->logger.info(""+action));
 	}*/
-	@Test
+	/*@Test
 	public void testListPage() throws Exception{
 		Cirteria cri = new Cirteria();
 		cri.setPageNum(2);
 		cri.setAmount(10);
 		dao.listPage(cri).forEach(board->logger.info(""+board));;
+	}*/
+	
+	@Test
+	public void testSearch() throws Exception{
+		
+		Cirteria cri = new Cirteria();
+		cri.setKeyword("³»¿ë");
+		cri.setType("TC");
+		dao.listPage(cri).forEach(board->logger.info(""+board));
+		
 	}
 }

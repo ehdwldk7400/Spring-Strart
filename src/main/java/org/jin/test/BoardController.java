@@ -39,7 +39,7 @@ public class BoardController {
 	}
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public void listGet(Model model, Cirteria cri) throws Exception{
-		logger.info("list get.....");
+		logger.info("list get....."+service.getToralCount(cri));
 		model.addAttribute("list", service.listPage(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, service.getToralCount(cri)));
 		

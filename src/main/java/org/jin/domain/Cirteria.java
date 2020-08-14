@@ -8,6 +8,16 @@ public class Cirteria {
 	// 페이지 당 데이터 수
 	private int amount;
 	
+	// 검색 종류(제목만, 내용만, 작성자만, 제목 + 내용)
+	private String keyword;
+	private String type;
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public Cirteria() {
 		this(1, 10);		// 페이지 시작시 pageNum = 1, amount = 10으로 초기화
 	}
@@ -46,8 +56,15 @@ public class Cirteria {
 		}
 		this.amount = amount;
 	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	@Override
 	public String toString() {
-		return "Cirteria [pageNum=" + pageNum + ", amount=" + amount + "]";
+		return "Cirteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", type=" + type + "]";
 	}
+	
 }
