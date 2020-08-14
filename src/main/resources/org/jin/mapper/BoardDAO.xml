@@ -41,5 +41,10 @@
 	) as boardList where rownum > (#{pageNum} -1) * #{amount} and rownum <= #{pageNum}*#{amount} order by bno desc;
  	]]>
  	</select>
+ 	<select id="getToralCount" resultType="int">
+ 	<![CDATA[
+ 		select count(*) from tbl_board where bno > 0
+ 	]]>
+ 	</select>
  	
  </mapper>

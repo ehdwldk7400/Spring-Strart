@@ -50,6 +50,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listPage(cri);
 	}
 
+	@Override
+	public int getToralCount(Cirteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getToralCount(cri);
+	}
+
 
 	
 	

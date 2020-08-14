@@ -12,6 +12,8 @@
 <body>
 	<form action="" role="form" id="fr">
 	<input type="hidden" name="bno" value="${read.bno }">
+	
+	<input type="text" name="pageNum" value="${cri.pageNum}">
 	<table border="1">
 		<tr > 
 			<td colspan="2">${read.title} </td>

@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="../resources/js/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../resources/js/read.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
 		<c:forEach items = "${list}" var = "board">
 		<tr>
 			<td>${board.bno}</td>
-			<td><a href="/jin/board/read?bno=${board.bno}">${board.title}</a></td>
+			<td><a href="/jin/board/read?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}">${board.title}</a></td>
 			<td>${board.writer}</td>
 			<td>${board.regdate}</td>
 			<td>${board.viewcnt}</td> 
@@ -27,9 +29,15 @@
 			</td>
 		</tr>
 	</table>
+ 	<c:if test="${pageMaker.prev}">
+		<a href="/jin/board/list?pageNum=${pageMaker.startPage-1}">이전</a>
+	</c:if> 
 	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 		<a href="/jin/board/list?pageNum=${num}">${num}</a>
 	</c:forEach>
+	<c:if test="${pageMaker.next}">
+		<a href="/jin/board/list?pageNum=${pageMaker.endPage+1}">다음</a>
+	</c:if>
 	<c:if test="${msg eq 'success' }">
 			<script type="text/javascript">
 				alert('수정되었습니다.');

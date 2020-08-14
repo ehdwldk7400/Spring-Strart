@@ -11,6 +11,7 @@
 <body>
 
 <form action="/jin/board/update?bno=${update.bno}" method="post">
+	<input type="text" name="pageNum" value="${cri.pageNum}"><br>
 	제목 : <input type="text" placeholder="제목" name="title" value="${update.title}"><br>
 	내용 : <textarea name="content" placeholder="내용">${update.content}</textarea><br>
 	작성자 : ${update.writer }<br>

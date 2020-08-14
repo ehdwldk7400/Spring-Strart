@@ -24,4 +24,6 @@ public interface BoardDAO {
 	
 	// 게시글 10개 식 리스트
 	public List<BoardVO> listPage(Cirteria cri) throws Exception;
+	
+	public int getToralCount(Cirteria cri) throws Exception;
 }
