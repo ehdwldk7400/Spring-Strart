@@ -62,7 +62,6 @@ public class ReplyDAOTest {
 		ReplyVO vo = new ReplyVO();
 		
 		vo.setRno(3);
-		dao.delete(vo);
 	}
 	
 }

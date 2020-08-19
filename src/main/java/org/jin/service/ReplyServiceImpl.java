@@ -2,6 +2,7 @@ package org.jin.service;
 
 import java.util.List;
 
+import org.jin.domain.Cirteria;
 import org.jin.domain.ReplyVO;
 import org.jin.mapper.ReplyDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,8 @@ public class ReplyServiceImpl implements ReplySerivce{
 	@Autowired
 	private ReplyDAO dao;
 	
-	public List<ReplyVO> list (int bno) throws Exception{
-		return dao.list(bno);
+	public List<ReplyVO> list (int bno, Cirteria cri) throws Exception{
+		return dao.list(bno, cri);
 	}
 
 	@Override
@@ -26,6 +27,12 @@ public class ReplyServiceImpl implements ReplySerivce{
 	public void update(ReplyVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.update(vo);
+	}
+
+	@Override
+	public void delete(int rno) throws Exception {
+		// TODO Auto-generated method stub
+		dao.delete(rno);
 	}
 
 

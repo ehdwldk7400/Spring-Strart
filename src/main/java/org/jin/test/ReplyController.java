@@ -2,6 +2,7 @@ package org.jin.test;
 
 import java.util.List;
 
+import org.jin.domain.Cirteria;
 import org.jin.domain.ReplyVO;
 import org.jin.service.ReplySerivce;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,11 @@ public class ReplyController {
    @Autowired
    private ReplySerivce reservice;
    
-   @RequestMapping(value="/all/{bno}", method=RequestMethod.GET)
-   public ResponseEntity<List<ReplyVO>> list (@PathVariable("bno") int bno) throws Exception{
+   @RequestMapping(value="/{bno}/{page}", method=RequestMethod.GET)
+   public ResponseEntity<List<ReplyVO>> list (@PathVariable("bno") int bno, @PathVariable("page") int page) throws Exception{
 	   
-	   return new ResponseEntity<>(reservice.list(bno), HttpStatus.OK);
+	   Cirteria cri = new Cirteria(page, 10);
+	   return new ResponseEntity<>(reservice.list(bno, cri), HttpStatus.OK);
    }
    
    @RequestMapping(value="", method=RequestMethod.POST)
@@ -49,6 +51,18 @@ public class ReplyController {
 		// TODO: handle exception
 		entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.OK);
 	}
+	   return entity;
+   }
+   @RequestMapping(value="{rno}",  method=RequestMethod.DELETE)
+   public ResponseEntity<String> delete(@PathVariable("rno") int rno) throws Exception{
+	   ResponseEntity<String> entity = null;
+	   try {
+		   reservice.delete(rno);;
+		   entity = new ResponseEntity<String>("DELETE SUCCESS",HttpStatus.OK);
+	   } catch (Exception e) {
+		   // TODO: handle exception
+		   entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.OK);
+	   }
 	   return entity;
    }
 }

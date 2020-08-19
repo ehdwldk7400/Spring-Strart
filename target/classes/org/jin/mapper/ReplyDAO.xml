@@ -3,18 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-  <mapper namespace="org.jin.mapper.ReplyDAO">
-  	<select id="list" resultType="org.jin.domain.ReplyVO">
-  		select * from tbl_reply where bno=#{bno} order by rno desc;
-  	</select>
-  	<insert id="create">
-  		insert into tbl_reply(bno, replytext, replyer) values(#{bno}, #{replytext}, #{replyer});
-  	</insert>
-  	<update id="update">
-  		update tbl_reply set replytext=#{replytext}, updatedate=now() where rno=#{rno};
-  	</update>
-  	
-  	<delete id="delete">
-  		delete from tbl_reply where rno=#{rno}
-  	</delete>
-  </mapper>
+<mapper namespace="org.jin.mapper.ReplyDAO">
+	<select id="list" resultType="org.jin.domain.ReplyVO">
+		<!--select * from tbl_reply where bno=#{bno} order by rno desc; -->
+		select rno,bno,replytext,replyer,regdate,updatedate
+		from (
+		select @rownum:=@rownum+1 as rownum, b.*
+		from (select @rownum:=0) as tmp, tbl_reply as b
+		where bno = #{bno}
+		order by rno desc
+		) as boardList
+	   <![CDATA[
+	   where rownum > (#{cri.pageNum}-1)*#{cri.amount}
+	   and rownum <= #{cri.pageNum}*#{cri.amount}
+	   ]]>
+
+	</select>
+	<insert id="create">
+		insert into tbl_reply(bno, replytext, replyer)
+		values(#{bno}, #{replytext},
+		#{replyer});
+	</insert>
+	<update id="update">
+		update tbl_reply set replytext=#{replytext},
+		updatedate=now() where
+		rno=#{rno};
+	</update>
+
+	<delete id="delete">
+		delete from tbl_reply where rno=#{rno}
+	</delete>
+</mapper>
