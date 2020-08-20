@@ -12,6 +12,9 @@ public interface ReplyDAO {
 //	public List<ReplyVO> list(ReplyVO vo, Cirteria cri) throws Exception;
 	public List<ReplyVO> list(@Param("bno") int bno,  @Param("cri") Cirteria cri) throws Exception;
 	
+	// 현제 게시물 전체 댓글 수
+	public int getCountBtBno(int bno) throws Exception;
+	
 	// 댓글 쓰기
 	public void create(ReplyVO vo) throws Exception;
 	

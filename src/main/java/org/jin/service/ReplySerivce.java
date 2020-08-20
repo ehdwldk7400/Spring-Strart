@@ -3,12 +3,13 @@ package org.jin.service;
 import java.util.List;
 
 import org.jin.domain.Cirteria;
+import org.jin.domain.ReplyPageVO;
 import org.jin.domain.ReplyVO;
 
 public interface ReplySerivce {
 
 	// ¥Ò±€ ∏ÆΩ∫∆Æ
-	public List<ReplyVO> list (int bno,  Cirteria cri) throws Exception;
+	public ReplyPageVO list (int bno,  Cirteria cri) throws Exception;
 	
 	// ¥Ò±€ ¿€º∫
 	public void create(ReplyVO vo) throws Exception;
@@ -18,4 +19,5 @@ public interface ReplySerivce {
 	
 	// ¥Ò±€ ªË¡¶
 	public void delete(int rno) throws Exception;
+	
 }

@@ -19,6 +19,10 @@
 	   ]]>
 
 	</select>
+	
+	<select id="getCountBtBno" resultType="int">
+		select count(*) from tbl_reply where bno=#{bno};
+	</select>
 	<insert id="create">
 		insert into tbl_reply(bno, replytext, replyer)
 		values(#{bno}, #{replytext},

@@ -3,6 +3,7 @@ package org.jin.test;
 import java.util.List;
 
 import org.jin.domain.Cirteria;
+import org.jin.domain.ReplyPageVO;
 import org.jin.domain.ReplyVO;
 import org.jin.service.ReplySerivce;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ReplyController {
    private ReplySerivce reservice;
    
    @RequestMapping(value="/{bno}/{page}", method=RequestMethod.GET)
-   public ResponseEntity<List<ReplyVO>> list (@PathVariable("bno") int bno, @PathVariable("page") int page) throws Exception{
+   public ResponseEntity<ReplyPageVO> list (@PathVariable("bno") int bno, @PathVariable("page") int page) throws Exception{
 	   
 	   Cirteria cri = new Cirteria(page, 10);
 	   return new ResponseEntity<>(reservice.list(bno, cri), HttpStatus.OK);

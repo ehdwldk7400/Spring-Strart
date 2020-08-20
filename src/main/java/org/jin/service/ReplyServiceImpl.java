@@ -3,6 +3,7 @@ package org.jin.service;
 import java.util.List;
 
 import org.jin.domain.Cirteria;
+import org.jin.domain.ReplyPageVO;
 import org.jin.domain.ReplyVO;
 import org.jin.mapper.ReplyDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ public class ReplyServiceImpl implements ReplySerivce{
 	@Autowired
 	private ReplyDAO dao;
 	
-	public List<ReplyVO> list (int bno, Cirteria cri) throws Exception{
-		return dao.list(bno, cri);
+	public ReplyPageVO list (int bno, Cirteria cri) throws Exception{
+		return new ReplyPageVO(dao.list(bno, cri), dao.getCountBtBno(bno));
 	}
 
 	@Override
