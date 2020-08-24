@@ -84,5 +84,10 @@
  		select count(*) from tbl_board
  			<include refid="search"></include>
 	</select>
+	
+	<update id="boardViewcnt">
+		update tbl_board set viewcnt = viewcnt+1 where bno=#{bno}; 
+	</update>
+	
 
 </mapper>

@@ -7,6 +7,7 @@ import org.jin.domain.Cirteria;
 import org.jin.mapper.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -20,9 +21,11 @@ public class BoardServiceImpl implements BoardService {
 		dao.create(vo);
 	}
 
+	@Transactional
 	@Override
 	public BoardVO read(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
+		dao.boardViewcnt(vo);
 		return dao.read(vo);
 	}
 

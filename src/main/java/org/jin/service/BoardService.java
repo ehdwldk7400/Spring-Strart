@@ -24,4 +24,5 @@ public interface BoardService {
 	public List<BoardVO> listPage(Cirteria cri) throws Exception;
 	
 	public int getToralCount(Cirteria cri) throws Exception;
+
 }
