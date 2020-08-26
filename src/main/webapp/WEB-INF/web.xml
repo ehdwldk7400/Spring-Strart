@@ -27,6 +27,13 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location>F:\\testUpload</location>
+			<max-file-size>20971520</max-file-size>
+			<max-request-size>41943030</max-request-size>
+			<file-size-threshold>20971520</file-size-threshold>
+		</multipart-config>
+		
 	</servlet>
 
 	<servlet-mapping>
@@ -47,5 +54,6 @@
 		<filter-name>encoding</filter-name>
 		<servlet-name>appServlet</servlet-name>
 	</filter-mapping>
+	
 
 </web-app>

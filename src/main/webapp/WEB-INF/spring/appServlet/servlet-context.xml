@@ -21,6 +21,15 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+		<!-- 파일 업로드시 최대 파일크기 설정 [ 10MB ] -->
+	
+	</beans:bean>
+	
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="F:\\testUpload"></beans:constructor-arg>
+	</beans:bean>
+	
 	<context:component-scan base-package="org.jin.test" />
 	
 	
