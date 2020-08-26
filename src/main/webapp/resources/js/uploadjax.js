@@ -20,6 +20,23 @@ $(document).ready(function() {
 		return true;
 	}
 
+	function showUploadFile(uploadResultArr) {
+		var str = "";
+			
+		$(uploadResultArr).each(function(i, obj) {
+			var fileCallPath = obj.uploadPath;
+			var uuid = obj.uuid;
+			var name = obj.fileName;
+			var image = encodeURIComponent(fileCallPath + "/" + uuid + "_" + name);
+			if(!obj.image){
+				str += "<li><a href='/jin/download?fileName="+image+"'>"+"<img src='resources/image/5.jpg'>" + obj.fileName + "</a></li>";	
+			}else{
+				str += "<li><img src='/jin/display?fileName="+image+"'>" + "</li>";				
+			}
+		})
+		$(".uploadList ul").append(str);
+	}
+
 	$(".fileDrop").on("dragenter dragover", function(event) {
 		event.preventDefault();
 		// alert("drag");
@@ -31,24 +48,25 @@ $(document).ready(function() {
 		var formData = new FormData();
 		for (var i = 0; i < files.length; i++) {
 			// var file = files[i];
-//			console.log(files[i].name);
-//			console.log(files[i].size);
+			// console.log(files[i].name);
+			// console.log(files[i].size);
 			if (!checkExtension(files[i].name, files[i].size)) {
 				return false;
 			}
-			formData.append("file",files[i]);
+			formData.append("file", files[i]);
 		}
 
 		$.ajax({
 			url : '/jin/uploadAjax',
 			data : formData,
-			dataType : 'text',
+			dataType : 'json',
 			processData : false,
 			contentType : false,
 			type : 'POST',
 			success : function(data) {
-				console.log(data);
-				alert(data);
+				showUploadFile(data);
+				console.log('data :', data);
+
 			}
 		});
 

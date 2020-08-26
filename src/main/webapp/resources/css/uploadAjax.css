@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.uploadList {
+	width: 100%;
+	background-color: gray;
+}
+
+.uploadList ul li {
+	list-style: none;
+	padding: 10px;
+}
+
+.uploadList ul li img {
+	width: 20px;
+}
+
+.fileDrop {
+	width: 300px;
+	height: 100px;
+	border: 1px solid #000;
+}

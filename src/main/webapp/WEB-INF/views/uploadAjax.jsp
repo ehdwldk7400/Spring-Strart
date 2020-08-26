@@ -7,14 +7,8 @@
 <title>Insert title here</title>
 	<script type="text/javascript" src="resources/js/jquery-3.5.1.js"></script>
 	<script type="text/javascript" src="resources/js/uploadjax.js"></script>
+	 <link rel="stylesheet" href="resources/css/uploadAjax.css">
 	
-	<style>
-		.fileDrop{
-			width: 300px;
-			height: 300px;
-			border: 1px solid #000;
-		}
-	</style>
 </head>
 <body>
 <h1>파일 업로드 하기 위한 폼</h1>
@@ -22,7 +16,10 @@
 	<div class="fileDrop"></div>
 	
 	<!-- File Upload Drag&Drop 결과 이미지 list -->
-	<div class="uploadList"></div>
+	<div class="uploadList">
+		<ul>
+		</ul>
+	</div>
 
 </body>
 </html>
