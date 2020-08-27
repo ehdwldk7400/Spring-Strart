@@ -28,10 +28,11 @@ $(document).ready(function() {
 			var uuid = obj.uuid;
 			var name = obj.fileName;
 			var image = encodeURIComponent(fileCallPath + "/" + uuid + "_" + name);
+			var simage = encodeURIComponent(fileCallPath + "/s_" + uuid + "_" + name);
 			if(!obj.image){
 				str += "<li><a href='/jin/download?fileName="+image+"'>"+"<img src='resources/image/5.jpg'>" + obj.fileName + "</a></li>";	
 			}else{
-				str += "<li><img src='/jin/display?fileName="+image+"'>" + "</li>";				
+				str += "<li><img src='/jin/display?fileName="+image+"'>"+"<span data-file='"+simage+"' data-type='image'>X</span>" + "</li>";				
 			}
 		})
 		$(".uploadList ul").append(str);
@@ -71,4 +72,26 @@ $(document).ready(function() {
 		});
 
 	});
+	
+	$(".uploadList").on("click", "span", function(e){
+		var fileName = $(this).data("file");
+		var type = $(this).data("type");
+		console.log(fileName);
+		console.log(type);
+		
+		$.ajax({
+			url : "/jin/deleteFile",
+			data: {fileName:fileName, type:type},
+			dataType: "text",
+			type: "POST",
+			success: function(data){
+				console.log(data);
+				if(data == "delete"){
+					alert("삭제 성공!!");					
+				}
+				
+			}
+		})
+	})
+	
 });

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jin.domain.BoardVO;
 import org.jin.domain.Cirteria;
+import org.jin.mapper.BoardAttachDAO;
 import org.jin.mapper.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,19 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDAO dao;
 	
+	@Autowired
+	private BoardAttachDAO attachDao;
+	
+	@Transactional
 	@Override
 	public void create(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("vo.getbno : " + vo.getBno());
 		dao.create(vo);
+		vo.getAttachList().forEach(attach->{
+			attach.setBno(vo.getBno());
+			attachDao.insert(attach);
+		});
 	}
 
 	@Transactional

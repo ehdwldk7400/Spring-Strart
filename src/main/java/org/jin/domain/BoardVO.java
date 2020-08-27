@@ -1,5 +1,7 @@
 package org.jin.domain;
 
+import java.util.List;
+
 public class BoardVO {
 	
 	private int bno;
@@ -9,7 +11,14 @@ public class BoardVO {
 	private String regdate;
 	private int viewcnt;
 	
+	private List<BoardAttachVO> attachList;
 
+	public List<BoardAttachVO> getAttachList() {
+		return attachList;
+	}
+	public void setAttachList(List<BoardAttachVO> attachList) {
+		this.attachList = attachList;
+	}
 	public int getBno() {
 		return bno;
 	}
@@ -49,7 +58,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", viewcnt=" + viewcnt + "]";
+				+ regdate + ", viewcnt=" + viewcnt + ", attachList=" + attachList + "]";
 	}
 	
 	

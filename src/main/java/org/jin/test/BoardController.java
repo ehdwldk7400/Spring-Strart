@@ -32,6 +32,7 @@ public class BoardController {
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String registerPOST(BoardVO vo, Model model) throws Exception{
 		logger.info("register POST......");
+		logger.info("BoardVO : " + vo);
 		service.create(vo);
 		model.addAttribute("result", "success");
 		
