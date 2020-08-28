@@ -1,7 +1,10 @@
 package org.jin.test;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.jin.domain.BoardAttachVO;
 import org.jin.domain.BoardVO;
 import org.jin.domain.Cirteria;
 import org.jin.domain.PageDTO;
@@ -9,6 +12,9 @@ import org.jin.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,5 +84,11 @@ public class BoardController {
 		logger.info("ªË¡¶");
 		return "redirect:/board/list";
 	}
-
+	@RequestMapping(value = "getAttachList", method = RequestMethod.GET,
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<BoardAttachVO>> getAttachList(int bno) throws Exception{
+		logger.info("getAttachList" + bno);
+		return new ResponseEntity<>(service.getAttachList(bno),HttpStatus.OK);
+	}
+	
 }

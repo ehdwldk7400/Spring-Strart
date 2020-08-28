@@ -13,6 +13,6 @@
 	</delete>
 	
 	<select id="select" resultType="org.jin.domain.BoardAttachVO">
-	
+		select * from tbl_attach where bno = #{bno}
 	</select>
 </mapper> 

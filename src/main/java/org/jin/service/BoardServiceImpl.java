@@ -2,6 +2,7 @@ package org.jin.service;
 
 import java.util.List;
 
+import org.jin.domain.BoardAttachVO;
 import org.jin.domain.BoardVO;
 import org.jin.domain.Cirteria;
 import org.jin.mapper.BoardAttachDAO;
@@ -23,8 +24,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void create(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("vo.getbno : " + vo.getBno());
 		dao.create(vo);
+		System.out.println("vo.getbno : " + vo.getBno());
 		vo.getAttachList().forEach(attach->{
 			attach.setBno(vo.getBno());
 			attachDao.insert(attach);
@@ -67,6 +68,12 @@ public class BoardServiceImpl implements BoardService {
 	public int getToralCount(Cirteria cri) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.getToralCount(cri);
+	}
+
+	@Override
+	public List<BoardAttachVO> getAttachList(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return attachDao.select(bno);
 	}
 
 

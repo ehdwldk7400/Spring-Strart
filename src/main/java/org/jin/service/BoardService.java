@@ -2,6 +2,7 @@ package org.jin.service;
 
 import java.util.List;
 
+import org.jin.domain.BoardAttachVO;
 import org.jin.domain.BoardVO;
 import org.jin.domain.Cirteria;
 
@@ -24,5 +25,7 @@ public interface BoardService {
 	public List<BoardVO> listPage(Cirteria cri) throws Exception;
 	
 	public int getToralCount(Cirteria cri) throws Exception;
+	
+	public List<BoardAttachVO> getAttachList(int bno) throws Exception;
 
 }

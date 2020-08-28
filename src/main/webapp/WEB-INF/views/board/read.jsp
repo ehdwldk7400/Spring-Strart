@@ -9,6 +9,7 @@
 <script type="text/javascript" src="../resources/js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../resources/js/read.js"></script>
 <script type="text/javascript" src="../resources/js/ajaxtest.js"></script>
+<link rel="stylesheet" href="../resources/css/read.css">
 </head>
 <body>
 	<form action="" role="form" id="fr">
@@ -25,7 +26,12 @@
 		</tr>
 
 		<tr > 
-			<td colspan="2"> ${read.content}</td>
+			<td colspan="2"> ${read.content}
+				<div class="uploadList">
+					<ul></ul>
+				</div>
+			</td>
+			
 		</tr>
 		<tr> 
 			<td colspan="2">

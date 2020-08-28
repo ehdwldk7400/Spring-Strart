@@ -39,8 +39,13 @@
 	
 	</sql>
 	<insert id="create">
-		insert into tbl_board(title,content,writer)
-		value(#{title},#{content},#{writer})
+	
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+				select max(bno)+1 bno from tbl_board;
+		</selectKey>
+	
+		insert into tbl_board(bno, title,content,writer)
+		value(#{bno}, #{title},#{content},#{writer})
 	</insert>
 
 	<select id="read" resultType="org.jin.domain.BoardVO">

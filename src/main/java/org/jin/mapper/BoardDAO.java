@@ -2,6 +2,7 @@ package org.jin.mapper;
 
 import java.util.List;
 
+import org.jin.domain.BoardAttachVO;
 import org.jin.domain.BoardVO;
 import org.jin.domain.Cirteria;
 
@@ -28,4 +29,6 @@ public interface BoardDAO {
 	public int getToralCount(Cirteria cri) throws Exception;
 	
 	public void boardViewcnt(BoardVO vo) throws Exception;
+	
+	
 }
