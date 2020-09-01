@@ -60,5 +60,24 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>
+	
+	<beans:bean id="authInterceptor"
+		class="org.jin.interceptor.AuthInterceptor"></beans:bean>
 
+	<interceptors>
+		<interceptor>
+			<!-- 글쓰기 전에 로그인 상태를 체크한 후 권한 부여 -->
+			<mapping path="/board/register" />
+		
+			<!-- 글수정 전에 로그인 상태를 체크한 후 권한 부여 -->
+			<mapping path="/board/update" />
+			
+			<!-- 글삭제 전에 로그인 상태를 체크한 후 권한 부여 -->
+			<mapping path="/board/deleter" />
+			<beans:ref bean="authInterceptor" />
+		</interceptor>
+	</interceptors>
+	
+	
+	
 </beans:beans>

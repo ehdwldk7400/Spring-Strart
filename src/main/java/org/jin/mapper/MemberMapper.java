@@ -15,5 +15,7 @@ public interface MemberMapper {
 		public void deleteMember(MemberVO vo);
 		
 		public MemberVO login(MemberVO vo);
+		
+		public int idChk(MemberVO vo);
 	
 }

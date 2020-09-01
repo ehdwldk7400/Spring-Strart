@@ -28,4 +28,7 @@
   	<select id="login" resultType="org.jin.mapper.MemberVO"> 
   		select userid, userpw, username from tbl_member where userid=#{userid} and userpw=#{userpw}
   	</select>
+  	<select id="idChk" resultType="int"> 
+	  	select count(*) from tbl_member where userid=#{userid}	
+  	</select>
   </mapper>
